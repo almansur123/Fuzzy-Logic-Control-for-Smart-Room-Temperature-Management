@@ -1,0 +1,87 @@
+[System]
+Name='temperature_control'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperature_Error_(e)'
+Range=[-10 10]
+NumMFs=8
+MF1='mf1':'trimf',[-18.33 -10 -1.667]
+MF2='mf2':'trimf',[-8.333 0 8.333]
+MF3='mf3':'trimf',[1.667 10 18.33]
+MF4='Negative Large (NL)':'trimf',[-10 -10 -5]
+MF5='Negative Small (NS)':'trimf',[-10 -5 0]
+MF6='Zero (Z)':'trimf',[-5 0 5]
+MF7='Positive Small (PS)':'trimf',[0 5 10]
+MF8='Positive Large (PL)':'trimf',[5 10 10]
+
+[Input2]
+Name='Change_in_Temperature_(Δe)'
+Range=[-5 5]
+NumMFs=8
+MF1='mf1':'trimf',[-9.167 -5 -0.8333]
+MF2='mf2':'trimf',[-4.167 0 4.167]
+MF3='mf3':'trimf',[0.8333 5 9.167]
+MF4='Negative Large (NL)':'trimf',[-5 -5 -2.5]
+MF5='Negative Small (NS)':'trimf',[-5 -2.5 0]
+MF6='Zero (Z)':'trimf',[-2.5 0 2.5]
+MF7='Positive Small (PS)':'trimf',[0 2.5 5]
+MF8='Positive Large (PL)':'trimf',[2.5 5 5]
+
+[Output1]
+Name='Heater_Power_(Pheater)'
+Range=[0 100]
+NumMFs=6
+MF1='mf1':'trimf',[-41.67 0 41.67]
+MF2='mf2':'trimf',[8.333 50 91.67]
+MF3='mf3':'trimf',[58.33 100 141.7]
+MF4='Low':'trimf',[0 0 50]
+MF5='Medium':'trimf',[25 50 75]
+MF6='High':'trimf',[50 100 100]
+
+[Output2]
+Name='Fan_Power_(Pfan)'
+Range=[0 100]
+NumMFs=6
+MF1='mf1':'trimf',[-41.67 0 41.67]
+MF2='mf2':'trimf',[8.333 50 91.67]
+MF3='mf3':'trimf',[58.33 100 141.7]
+MF4='Low':'trimf',[0 0 50]
+MF5='Medium':'trimf',[25 50 75]
+MF6='High':'trimf',[50 100 100]
+
+[Rules]
+4 4, 6 4 (1) : 1
+4 5, 6 4 (1) : 1
+4 6, 5 4 (1) : 1
+4 7, 5 4 (1) : 1
+4 8, 4 4 (1) : 1
+5 4, 6 4 (1) : 1
+5 5, 6 4 (1) : 1
+5 6, 5 4 (1) : 1
+5 7, 5 4 (1) : 1
+5 8, 4 4 (1) : 1
+6 4, 4 4 (1) : 1
+6 5, 4 4 (1) : 1
+6 6, 4 4 (1) : 1
+6 7, 4 4 (1) : 1
+6 8, 4 4 (1) : 1
+7 4, 4 5 (1) : 1
+7 5, 4 5 (1) : 1
+7 6, 4 6 (1) : 1
+7 7, 4 6 (1) : 1
+7 8, 4 6 (1) : 1
+8 4, 4 6 (1) : 1
+8 5, 4 6 (1) : 1
+8 6, 4 6 (1) : 1
+8 7, 4 6 (1) : 1
+8 8, 4 6 (1) : 1
